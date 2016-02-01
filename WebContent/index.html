@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="US-ASCII">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="urlClass" style="width: 600px;position: relative;top: 0;left: calc(50% - 300px);height: 85px;">
+		<form name="form" method="get" action="getPost">
+			<p style="font-size:20px;margin:0;text-align: center;">Enter an image URL to upload:</p>
+			<input type="text" name="url_address" style="font-size: 20px;width: 50%;height: 20px;position: absolute;top: 27px;left: 25%;">
+			<input type="submit" value="Upload" style="cursor:pointer;width: 100px;font-size: 20px;top: 60px;position: absolute;left: calc(50% - 50px);">
+		</form>
+	</div>
+	
+	<div class="computerClass" style="width: 600px;position: relative;top: 10px;height: 85px;left: calc(50% - 300px);">
+		<form name="uploadFromComputer" method="post" enctype="multipart/form-data" action="getPost" >
+  			<p style="font-size:20px;margin:0;text-align: center;">Or upload from your computer:</p>
+  			<input type="file" name="file" style="cursor:pointer;width: 27%;position: absolute;left: 36.5%;top: 27px;">
+  			<button type="submit" name="submit" style="cursor:pointer;width: 100px;font-size: 13px;position: absolute;top: 52px;left: calc(50% - 50px);">Upload</button>
+	</form>
+	</div>
+	
+	
+
+</body>
+</html>
