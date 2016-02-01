@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -42,8 +43,12 @@ public class uploadPhoto extends HttpServlet {
 		String URL_IS = request.getParameter("url_address");
 		System.out.println(URL_IS);
 		
+		Map uploadParams = ObjectUtils.asMap(
+		  "tags", "all"
+		);
+		
 		//http://web.cs.dal.ca/~zihaow/wu/images/bg.jpg
-		Map uploadResult = cloudinary.uploader().upload(URL_IS, ObjectUtils.emptyMap());
+		Map uploadResult = cloudinary.uploader().upload(URL_IS, uploadParams);
 		
 		// get public ID for uploaded photo from returned JSON Object.
 		String publicId = (String) uploadResult.get("public_id");
@@ -55,6 +60,9 @@ public class uploadPhoto extends HttpServlet {
 			url.print(publicId);
 			url.print("\n");
 			url.print(imageURL);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("whatTheHell", imageURL);
+			dispatcher.forward(request,response); 
 		}
 	}
 
@@ -69,7 +77,10 @@ public class uploadPhoto extends HttpServlet {
 	    
 	    // Upload photo locally
 		// Use the file name for its public ID name.
-		Map params = ObjectUtils.asMap("use_filename", true); 
+		Map params = ObjectUtils.asMap(
+				  "tags", "all",
+				  "use_filename", true
+				);
 		
 		// convert inputstream to file format.
 		// reference from: http://www.mkyong.com/java/how-to-convert-inputstream-to-file-in-java/
@@ -119,6 +130,9 @@ public class uploadPhoto extends HttpServlet {
 			url.print(publicId);
 			url.print("\n");
 			url.print(imageURL);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("whatTheHell", imageURL);
+			dispatcher.forward(request,response); 
 		}
 	}
 }
