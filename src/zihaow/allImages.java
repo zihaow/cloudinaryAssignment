@@ -38,7 +38,7 @@ public class allImages extends HttpServlet {
 		try {
 			Map result = api.resourcesByTag("all", ObjectUtils.emptyMap());
 			String imageURL = (String) result.get("secure_url");
-			url.print(imageURL);
+			url.print(result);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
