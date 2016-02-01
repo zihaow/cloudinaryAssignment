@@ -67,14 +67,12 @@ public class uploadPhoto extends HttpServlet {
 		Part filePart = request.getPart("file"); 
 		InputStream fileContent = filePart.getInputStream();
 	    
-	    String type = filePart.getContentType();
-		System.out.println(type);
-		System.out.println(fileContent);
-		
-		// Upload photo locally
+	    // Upload photo locally
 		// Use the file name for its public ID name.
 		Map params = ObjectUtils.asMap("use_filename", true); 
 		
+		// convert inputstream to file format.
+		// reference from: http://www.mkyong.com/java/how-to-convert-inputstream-to-file-in-java/
 		OutputStream outputStream = null;
 		String newFile = "newPhoto.png";
 		
