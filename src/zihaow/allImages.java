@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.cloudinary.*;
 import com.cloudinary.utils.*;
 
+import com.google.gson.Gson;
+
 /**
  * Servlet implementation class allImages
  */
@@ -37,8 +39,15 @@ public class allImages extends HttpServlet {
 		PrintWriter url = response.getWriter();
 		try {
 			Map result = api.resourcesByTag("all", ObjectUtils.emptyMap());
-			String imageURL = (String) result.get("secure_url");
-			url.print(result);
+			Gson gson = new Gson();
+		    String json = gson.toJson(result);
+			
+			//String imageURL = json.getString("resources");
+			
+			//get("secure_url");
+			url.print(json);
+			//url.print("\n");
+			//url.print(imageURL);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

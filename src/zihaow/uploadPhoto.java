@@ -33,7 +33,7 @@ public class uploadPhoto extends HttpServlet {
 		  "cloud_name", "zihaow",
 		  "api_key", "817596677842685",
 		  "api_secret", "kMSiCs8uUbdiqQOyErcCTwzP_vQ"));
-       
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
