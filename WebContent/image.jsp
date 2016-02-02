@@ -9,11 +9,22 @@
 		background-image:url("http://res.cloudinary.com/zihaow/image/upload/v1454386586/newPhoto_voytug.jpg");
 		background-size:cover;
 	}
+	
+	.backButton:hover {
+		color:#fff !important;
+		background-color:#000;
+		-webkit-transition: 0.5s; 
+    	transition: 0.5s;
+	}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Image Gallery</title>
 </head>
 <body style="margin: 0;" ng-controller="appController"">
+
+	<div style="position: fixed;top: 10px;left: calc(50% - 87.5px);cursor: pointer;">
+		<a href="index.html" class="backButton" style="color: #000;text-decoration: none;font-family: sans-serif;font-weight: 100;border: 1px solid #000;padding: 3px 10px;border-radius: 3px;">Back to Upload Page</a>
+	</div>
 	<div>
 		<ul ng-repeat="(key, value) in photoes" style="margin: 0;padding: 0;">
 			<li ng-repeat="photo in value" style="display: inline-block;width:50%;">
@@ -26,7 +37,7 @@
 		<img src="{{ zoomPhoto }}" style="width:100%;height: calc(100% - 30px);">
 		<div class="options" style="position:absolute;width:100%;height:30px;bottom:0;left:0;">
 			<a ng-click="deletePhoto()" style="cursor:pointer;background-color: #000;color: #ffffff;opacity: 0.7;width: 33.3%;position: absolute;height: 100%;left: 0;text-align: center;font-size: 20px;font-family: fantasy;">Delete</a>
-			<a style="cursor:pointer;background-color: #000;color: #ffffff;opacity: 0.7;width: 33.3%;position: absolute;height: 100%;left: 33.3%;text-align: center;font-size: 20px;font-family: fantasy;">Download</a>
+			<a ng-href="{{ zoomPhoto }}" style="cursor:pointer;background-color: #000;color: #ffffff;opacity: 0.7;width: 33.3%;position: absolute;height: 100%;left: 33.3%;text-align: center;font-size: 20px;font-family: fantasy;" download>Download</a>
 			<a ng-click="hidePopUp()" style="cursor:pointer;background-color: #000;color: #ffffff;opacity: 0.7;width: 33.3%;position: absolute;height: 100%;left: 66.7%;text-align: center;font-size: 20px;font-family: fantasy;">Exit</a>
 		</div>
 	</div>
