@@ -4,30 +4,31 @@
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
 <head>
+<style>
+	body{
+		background-image:url("http://res.cloudinary.com/zihaow/image/upload/v1454386586/newPhoto_voytug.jpg");
+		background-size:cover;
+	}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Image Gallery</title>
 </head>
-<body>
-
-	
+<body style="margin: 0;">
 	<div ng-app="app" ng-controller="appController"">
-		<ul >
-			<li>{{ test }}</li>
+		<ul ng-repeat="(key, value) in photoes" style="margin: 0;padding: 0;">
+			<li ng-repeat="photo in value" style="display: inline-block;width:50%;">
+				<img src="{{ photo.secure_url }}" style="width: 100%;height: 100%;">
+			</li>
 		</ul>
 	</div>
-	
-	<!--  
-		<a class="backButton" href="<%= request.getAttribute("whatTheHell") %>">Download</a>
-	-->
 <script>
-var app = angular.module('app', []);
-
-app.controller('appController', function($scope, $http) {
-   	$scope.test = "qhbcehqbc";
-   	$http.get("/cloudinaryAssignment/all").then(function(response){
-   		console.log(response);
-   	});
-});
+	var app = angular.module('app', []);
+	app.controller('appController', function($scope, $http) {
+   		$scope.test = "qhbcehqbc";
+   		$http.get("/cloudinaryAssignment/all").then(function(response){
+   			$scope.photoes = response.data;
+   		});
+	});
 </script>
 </body>
 </html>
