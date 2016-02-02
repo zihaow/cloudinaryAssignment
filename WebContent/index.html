@@ -3,12 +3,25 @@
 <head>
 <meta charset="US-ASCII">
 <title>Photo Master</title>
+<style>
+	body{
+		background-image:url("http://web.cs.dal.ca/~zihaow/wu/images/bg.jpg");
+		background-size:cover;
+	}
+	
+	a:hover {
+		color:#C51836 !important;
+		-webkit-transition: 0.5s; 
+    	transition: 0.5s;
+	}
+	
+</style>
 </head>
 <body>
 	<div class="urlClass" style="width: 600px;position: relative;top: 0;left: calc(50% - 300px);height: 85px;">
 		<form name="form" method="get" action="getPost">
 			<p style="font-family: sans-serif;font-size:19px;margin:0;text-align: center;">Enter an image URL to upload:</p>
-			<input type="text" name="url_address" style="outline: none;border-radius: 3px;border: 1px solid #000;font-size: 20px;width: 50%;height: 20px;position: absolute;top: 27px;left: 25%;">
+			<input type="text" name="url_address" style="background-color:transparent;outline: none;border-radius: 3px;border: 1px solid #000;font-size: 20px;width: 50%;height: 20px;position: absolute;top: 27px;left: 25%;color:#ffffff;">
 			<input type="submit" value="Upload" style="background-color:transparent;border: 1px solid #000;border-radius: 3px;cursor:pointer;width: 100px;font-size: 17px;top: 60px;position: absolute;left: calc(50% - 50px);">
 		</form>
 	</div>
@@ -19,6 +32,10 @@
   			<input type="file" name="file" style="cursor:pointer;width: 27%;position: absolute;left: 36.5%;top: 27px;">
   			<button type="submit" name="submit" style="background-color:transparent;border: 1px solid #000;border-radius: 3px;cursor:pointer;width: 100px;font-size: 17px;position: absolute;top: 52px;left: calc(50% - 50px);">Upload</button>
 	</form>
+	</div>
+	
+	<div class="viewGallery" style="width: 288px;height: 50px;font-size: 35px;font-family: fantasy;padding: 10px 20px;position: relative;top: 50px;left: calc(50% - 144px);cursor: pointer;">
+		<a class="view" href="image.jsp" style="color: #000;text-decoration: none;">View Image Gallery</a>
 	</div>
 	
 	

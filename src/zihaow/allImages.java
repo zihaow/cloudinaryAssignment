@@ -1,18 +1,15 @@
 package zihaow;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Map;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import org.cloudinary.json.JSONObject;
 import com.cloudinary.*;
 import com.cloudinary.utils.*;
-
 import com.google.gson.Gson;
 
 /**
@@ -30,35 +27,21 @@ public class allImages extends HttpServlet {
 	Cloudinary cloudinary = new Cloudinary(config);
 	Api api = cloudinary.api();
 
-	
-       
-    /**
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter url = response.getWriter();
+		JSONObject json = new JSONObject();
 		try {
 			Map result = api.resourcesByTag("all", ObjectUtils.emptyMap());
 			Gson gson = new Gson();
-		    String json = gson.toJson(result);
-			
-			//String imageURL = json.getString("resources");
-			
-			//get("secure_url");
-			url.print(json);
-			//url.print("\n");
-			//url.print(imageURL);
+		    String jsonString = gson.toJson(result);
+		    json = new JSONObject(jsonString);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		response.setContentType("application/json");
+		response.getWriter().write(json.toString());
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
 }
