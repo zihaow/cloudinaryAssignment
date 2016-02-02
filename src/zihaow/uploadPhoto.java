@@ -5,9 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.Map;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -39,7 +37,6 @@ public class uploadPhoto extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		PrintWriter url = response.getWriter();
 		String URL_IS = request.getParameter("url_address");
 		System.out.println(URL_IS);
 		
@@ -50,16 +47,10 @@ public class uploadPhoto extends HttpServlet {
 		//http://web.cs.dal.ca/~zihaow/wu/images/bg.jpg
 		Map uploadResult = cloudinary.uploader().upload(URL_IS, uploadParams);
 		
-		// get public ID for uploaded photo from returned JSON Object.
-		String publicId = (String) uploadResult.get("public_id");
+		// get image URL for uploaded photo from returned JSON Object.
 		String imageURL = (String) uploadResult.get("secure_url");
 		
 		if(uploadResult != null) {
-			url.print("Image uploaded successfully");
-			url.print("\n");
-			url.print(publicId);
-			url.print("\n");
-			url.print(imageURL);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			request.setAttribute("whatTheHell", imageURL);
 			dispatcher.forward(request,response); 
@@ -70,7 +61,6 @@ public class uploadPhoto extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter url = response.getWriter();
 		
 		Part filePart = request.getPart("file"); 
 		InputStream fileContent = filePart.getInputStream();
@@ -82,7 +72,7 @@ public class uploadPhoto extends HttpServlet {
 				  "use_filename", true
 				);
 		
-		// convert inputstream to file format.
+		// Convert inputstream to file format.
 		// reference from: http://www.mkyong.com/java/how-to-convert-inputstream-to-file-in-java/
 		OutputStream outputStream = null;
 		String newFile = "newPhoto.png";
@@ -120,16 +110,10 @@ public class uploadPhoto extends HttpServlet {
 		// Upload photo to cloudinary, uploadResult is the returned JSON Object.
 		Map uploadResult = cloudinary.uploader().upload(newFile, params);
 		
-		// get public ID for uploaded photo from returned JSON Object.
-		String publicId = (String) uploadResult.get("public_id");
+		// get image URL for uploaded photo from returned JSON Object.
 		String imageURL = (String) uploadResult.get("secure_url");
 				
 		if(uploadResult != null) {
-			url.print("Image uploaded successfully");
-			url.print("\n");
-			url.print(publicId);
-			url.print("\n");
-			url.print(imageURL);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			request.setAttribute("whatTheHell", imageURL);
 			dispatcher.forward(request,response); 
