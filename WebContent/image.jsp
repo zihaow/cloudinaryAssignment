@@ -43,8 +43,8 @@
 	</div>
 <script>
 	var app = angular.module('app', []);
-	app.controller('appController', function($scope, $http) {
-   		
+	app.controller('appController', function($scope, $http, $location) {
+		
 		// get all images.
    		$http.get("/cloudinaryAssignment/all").then(function(response){
    			$scope.photoes = response.data;

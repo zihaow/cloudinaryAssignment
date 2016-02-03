@@ -42,12 +42,12 @@ public class deleteImage extends HttpServlet {
 				if( current == check ){
 					times++;
 				}
-				if( current == check && times == 3){
-					String currentString = String.valueOf(current);
-					String[] parts = url.split(currentString);
-					public_id = parts[3];
-				}
 			}
+			
+			// get public ID from URL.
+			String currentString = String.valueOf('/');
+			String[] parts = url.split(currentString);
+			public_id = parts[times];
 			
 			// delete from cloudinary.
 			api.deleteResources(Arrays.asList(public_id),
