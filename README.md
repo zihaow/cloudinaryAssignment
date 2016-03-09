@@ -1,4 +1,4 @@
-#RESTFul photo master API built with Java with Apache Maven, Tomcat and cloudinary.
+#RESTFul photo master API built using Java with Apache Maven, Tomcat and cloudinary.
 
 ##What is Photo Master?
 
