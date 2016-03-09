@@ -11,3 +11,12 @@ Photo Master was written using Java, Apache Maven, Gson (An open-source library 
 ##How to run it
 To run it, clone it to your local directory, using Eclipse to open the project. Make sure you have Tomcat installed. Then run it on localhost.
 
+##Photo Master Main Page
+![alt tag](http://res.cloudinary.com/zihaow/image/upload/c_scale,w_1398/v1457547418/main_r5afms.png)
+
+##Photo Master Success Uploaded Page
+![alt tag](http://res.cloudinary.com/zihaow/image/upload/c_scale,w_1544/v1457547465/upload_URL_rlhtz8.png)
+
+##Photo Master Photo Gallery Page
+![alt tag](http://res.cloudinary.com/zihaow/image/upload/v1457547508/gallery_URL_hkfupi.png)
+
