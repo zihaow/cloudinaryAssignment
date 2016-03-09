@@ -8,3 +8,6 @@ Photo Master is a client app which allows users to upload images either via a re
 
 Photo Master was written using Java, Apache Maven, Gson (An open-source library for converting JSON), AngularJS, HTML, JSP. AngularJS, HTML, JSP are responsible for delivering beautiful user interface on the front-end while Apache Maven, Gson and Java are running on the web server side handling all user requests (Upload: HTTP GET when user uploads images via URL, HTTP POST when user uploads images from local computer, delete: HTTP DELETE request, view images: HTTP GET request.).
 
+##How to run it
+To run it, clone it to your local directory, using Eclipse to open the project. Make sure you have Tomcat installed. Then run it on localhost.
+
